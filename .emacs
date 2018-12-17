@@ -23,7 +23,8 @@
     flycheck
     material-theme
     py-autopep8
-    magit))
+    magit
+    auctex))
 
 (dolist (p myPackages)
   (when (not (package-installed-p p))
@@ -50,6 +51,15 @@
 (require 'ido)
 (ido-mode t)
 
+(setenv "PATH"
+  (concat
+   "/usr/local/texlive/2013/bin/x86_64-linux" ":"
+   (getenv "PATH")
+  )
+  )
+
+(show-paren-mode 1)
+
 ;; init.el ends here
 
 (custom-set-variables
@@ -59,7 +69,12 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (material-theme better-defaults yasnippet auto-complete auctex))))
+    (material-theme better-defaults yasnippet auto-complete auctex)))
+ '(TeX-PDF-mode t)
+ '(TeX-source-correlate-method (quote auto))
+ '(TeX-source-correlate-mode t)
+ '(TeX-source-correlate-start-server t))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
