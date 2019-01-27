@@ -24,7 +24,8 @@
     material-theme
     py-autopep8
     magit
-    auctex))
+    auctex
+    org))
 
 (dolist (p myPackages)
   (when (not (package-installed-p p))
@@ -53,12 +54,17 @@
 
 (setenv "PATH"
   (concat
-   "/usr/local/texlive/2013/bin/x86_64-linux" ":"
+   "/usr/local/texlive/2016/bin/x86_64-linux" ":"
    (getenv "PATH")
   )
   )
 
 (show-paren-mode 1)
+
+(require 'org)
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t)
 
 ;; init.el ends here
 
